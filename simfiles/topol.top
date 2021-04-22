@@ -1,0 +1,59 @@
+;
+;	File 'topol.top' was generated
+;	By user: unknown (1000)
+;	On host: LAPTOP-5S7TS7TV
+;	At date: Tue Mar 16 18:47:22 2021
+;
+;	This is a standalone topology file
+;
+;	Created by:
+;	                :-) GROMACS - gmx pdb2gmx, 2020.4-MODIFIED (-:
+;	
+;	Executable:   /usr/local/bin/gmx
+;	Data prefix:  /usr/local
+;	Working dir:  /mnt/c/users/kevin/documents/project/magic_tutorials_examples/nacl_2/sim2
+;	Command line:
+;	  gmx pdb2gmx -f nacl.pdb -o nacl.gro -water spce
+;	Force field was read from the standard GROMACS share directory.
+;
+
+; Include forcefield parameters
+#include "oplsaa.ff/forcefield.itp"
+
+[ moleculetype ]
+; Name            nrexcl
+Ion                 3
+
+[ atoms ]
+;   nr       type  resnr residue  atom   cgnr     charge       mass  typeB    chargeB      massB
+; residue   0 NA  rtp NA   q +1.0
+     1   opls_407      0     NA     NA      1          1    22.9898   ; qtot 1
+
+; Include Position restraint file
+#ifdef POSRES
+#include "posre.itp"
+#endif
+
+; Include water topology
+#include "oplsaa.ff/spce.itp"
+
+#ifdef POSRES_WATER
+; Position restraint for each water oxygen
+[ position_restraints ]
+;  i funct       fcx        fcy        fcz
+   1    1       1000       1000       1000
+#endif
+
+; Include topology for ions
+#include "oplsaa.ff/ions.itp"
+
+[ system ]
+; Name
+Protein in water
+
+[ molecules ]
+; Compound        #mols
+Ion                 1
+SOL         844
+NA               19
+CL               20
