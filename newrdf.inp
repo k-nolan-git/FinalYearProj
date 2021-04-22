@@ -1,0 +1,30 @@
+&Parameters
+ TrajFile = splittraj999800.xtc 
+ NMType = 2
+ NameMType = Na+.CG,Cl-.CG,
+ NMolMType = 20,20,
+ NFBEG = 1,
+ NFEND = 1,
+ ISTEP = 1, 
+ OutputFile = NaCl_4999.rdf 
+ RMaxNB = 15.
+ RMaxB =10.0
+ ResolNB =0.05
+ ResolB=0.02
+ ResolA=1.0
+&ENDParameters
+
+&CGTypes
+Na: Na
+Cl: Cl
+&EndCGTypes
+
+&RDFsNB
+Add: all
+&EndRDFsNB
+
+&RDFsB
+&EndRDFsB
+
+&RDFsA
+&EndRDFsA
